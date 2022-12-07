@@ -1,0 +1,31 @@
+@mixin flex($justify-content, $align-item) {
+  display: flex;
+  align-items: $align-item;
+  justify-content: $justify-content;
+}
+
+@mixin apply-bg {
+  &:before {
+    content: "";
+    background-image: $background-image;
+    background-size: cover;
+    bottom: -5px;
+    left: -5px;
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    z-index: -1;
+    filter: brightness(0.85);
+  }
+}
+
+@mixin blur-bg {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(25px);
+}
+
+@mixin tablet {
+  @media only screen and (max-width: 1450px) {
+    @content;
+  }
+}

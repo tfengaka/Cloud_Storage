@@ -1,0 +1,83 @@
+table:
+  name: shares
+  schema: public
+object_relationships:
+- name: account
+  using:
+    foreign_key_constraint_on: accountId
+- name: file
+  using:
+    foreign_key_constraint_on: fileId
+- name: owner
+  using:
+    foreign_key_constraint_on: createdBy
+- name: userUpdated
+  using:
+    foreign_key_constraint_on: updatedBy
+insert_permissions:
+- permission:
+    backend_only: false
+    check:
+      file:
+        createdBy:
+          _eq: X-Hasura-User-Id
+    columns:
+    - accountId
+    - createdAt
+    - createdBy
+    - fileId
+    - status
+    - updatedAt
+    - updatedBy
+  role: user
+select_permissions:
+- permission:
+    allow_aggregations: true
+    columns:
+    - accountId
+    - createdAt
+    - createdBy
+    - fileId
+    - layer
+    - status
+    - updatedAt
+    - updatedBy
+    filter:
+      _and:
+      - accountId:
+          _eq: X-Hasura-User-Id
+      - status:
+          _neq: deleted
+      - file:
+          status:
+            _neq: deleted
+  role: user
+update_permissions:
+- permission:
+    check: null
+    columns:
+    - status
+    - accountId
+    - createdBy
+    - fileId
+    - updatedBy
+    - createdAt
+    - updatedAt
+    filter:
+      _or:
+      - accountId:
+          _eq: X-Hasura-User-Id
+      - file:
+          createdBy:
+            _eq: X-Hasura-User-Id
+  role: user
+delete_permissions:
+- permission:
+    filter:
+      _or:
+      - accountId:
+          _eq: X-Hasura-User-Id
+      - file:
+          createdBy:
+            _eq: X-Hasura-User-Id
+  role: user

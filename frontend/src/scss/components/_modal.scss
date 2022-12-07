@@ -1,0 +1,302 @@
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  transition: all 0.2s ease-in;
+
+  &.active {
+    display: block;
+  }
+}
+.btn_close {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(116, 116, 116, 0.2);
+  font-size: 20px;
+  font-weight: 500;
+  color: #d7dde8;
+  border-radius: 100rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: rgba(116, 116, 116, 0.4);
+    svg {
+      color: #bd0a46;
+      transition: all 0.3s ease;
+    }
+  }
+}
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  &.wrapper {
+    width: 100%;
+    max-width: 600px;
+    background: $modal_bg;
+    padding: 24px;
+    padding-bottom: 0;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    user-select: none;
+  }
+  &_header {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.5rem;
+    color: rgb(60, 64, 67);
+    margin-bottom: 12px;
+  }
+  .form-control > input {
+    background-color: #fff;
+    border-radius: 4px;
+  }
+  &_button {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding-bottom: 12px;
+    button {
+      font-size: 16px;
+      font-weight: 500;
+      padding: 6px 18px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      &.cancel {
+        background-color: #d80c50;
+        color: #ffffff;
+        &:hover {
+          background-color: #bd0a46;
+        }
+      }
+      &.confirm {
+        background-color: #005db4;
+        color: #ffffff;
+        &:hover {
+          background-color: #00488b;
+        }
+      }
+    }
+  }
+  &_title {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5rem;
+    color: rgb(60, 64, 67);
+    margin-bottom: 8px;
+  }
+}
+
+.process {
+  min-width: 340px;
+  position: fixed;
+  bottom: 8px;
+  right: 8px;
+  padding: 16px;
+  border-radius: 6px;
+  background-color: #dddddd;
+  z-index: 999;
+  transition: all 0.2s ease-in;
+  &_body {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  &_done {
+    font-size: 20px;
+    color: #34a853;
+  }
+  &_info {
+    flex: 1;
+    span {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 20px;
+    }
+  }
+  &_persent {
+    position: relative;
+    width: 100%;
+    height: 5px;
+    border-radius: 2px;
+    background-color: rgba(83, 83, 83, 0.3);
+    margin-top: 6px;
+    transition: all 0.3s ease;
+    &_bar {
+      position: absolute;
+      left: 0;
+      height: 100%;
+      border-radius: 4px;
+      background-color: #0072ff;
+    }
+  }
+}
+
+.share {
+  width: 100%;
+  margin-bottom: 16px;
+  &_input {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    input {
+      flex: 1;
+      padding: 8px 12px;
+      border-radius: 4px;
+      border: 2px solid rgba(83, 83, 83, 0.3);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 20px;
+      color: rgb(60, 64, 67);
+      transition: all 0.3s ease;
+      &:focus {
+        border-color: #0072ff;
+      }
+    }
+    button {
+      padding: 8px 12px;
+      border-radius: 4px;
+      border: 1px solid rgba(83, 83, 83, 0.1);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 20px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      background-color: #005db4;
+      color: #ffffff;
+      &:hover {
+        background-color: #00488b;
+      }
+    }
+  }
+  &_container {
+    padding: 8px 0;
+  }
+  &_list {
+    width: 100%;
+    height: 100%;
+    max-height: 335px;
+    overflow: hidden auto;
+    &_item ~ &_item {
+      margin-top: 6px;
+    }
+    &_item {
+      padding: 8px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #d7dde8;
+      label {
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 1.5rem;
+      }
+      button {
+        width: 24px;
+        height: 24px;
+        border-radius: 100rem;
+        background-color: transparent;
+        cursor: pointer;
+        svg {
+          display: block;
+          margin: 0 auto;
+        }
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.1);
+          color: #d80c50;
+        }
+      }
+    }
+  }
+}
+
+.moving {
+  width: 100%;
+  svg {
+    font-size: inherit;
+  }
+  &_target {
+    margin-bottom: 16px;
+    &_path {
+      display: flex;
+      align-items: center;
+      padding: 6px 8px;
+      gap: 4px;
+      background: #e0eafc;
+      border-radius: 4px;
+      box-shadow: rgba(149, 157, 165, 0.4) 0px 0px 16px;
+      &_item {
+        padding: 4px 8px;
+        font-size: 15px;
+        font-weight: 500;
+        color: rgb(60, 64, 67);
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        &:hover {
+          color: rgb(28, 89, 180);
+          background-color: rgba(167, 198, 255, 0.5);
+        }
+      }
+    }
+  }
+  &_tree {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+  &_folders {
+    width: 100%;
+    height: 200px;
+    max-height: 100%;
+    padding: 8px;
+    background: #e0eafc;
+    box-shadow: rgba(149, 157, 165, 0.4) 0px 0px 16px;
+    border-radius: 4px;
+    overflow: hidden auto;
+    &_item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 20px;
+      color: rgb(60, 64, 67);
+      padding: 8px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      &:hover {
+        color: rgb(28, 89, 180);
+        background-color: rgba(167, 198, 255, 0.5);
+      }
+    }
+  }
+}
+
+.viewer {
+  min-width: 1024px;
+  min-height: 150px;
+  height: 100%;
+  color: #d7dde8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  & > * {
+    display: block;
+    margin: 0 auto;
+  }
+  img {
+    width: 85%;
+    object-fit: cover;
+  }
+}

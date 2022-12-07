@@ -1,0 +1,152 @@
+.header {
+  @include flex(space-between, center);
+  @include blur-bg;
+  grid-area: header;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  width: 100%;
+  height: $header-height;
+  padding: 0 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  &_logo {
+    @include flex(none, center);
+    width: 200px;
+    &-img {
+      width: 20%;
+      margin-right: 10px;
+      img {
+        width: 100%;
+      }
+    }
+    h3 {
+      user-select: none;
+    }
+  }
+  &_account {
+    @include flex(flex-end, center);
+    min-width: 245px;
+    button {
+      background-color: #df0e54;
+      color: #fff;
+      border-radius: 4px;
+      padding: 6px 12px;
+      margin-left: 1rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &_search {
+    @include flex(auto, center);
+    width: 550px;
+    border-radius: 4px;
+    background: $modal_bg;
+    color: #000;
+    padding: 2px 6px;
+    margin-right: 5rem;
+    .icon,
+    .icon_btn {
+      border-radius: 50%;
+      padding: 6px;
+      color: #5f6368;
+    }
+    &-input {
+      font-family: "Roboto", sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      background-color: inherit;
+      width: 100%;
+      height: 100%;
+      margin: 0 8px;
+      caret-color: #df0e54;
+
+      &:not(:placeholder-shown) ~ .header_search_btn {
+        display: block;
+      }
+    }
+    &_btn {
+      display: none;
+      margin-bottom: -4px;
+      color: rgba(22, 24, 35, 0.34);
+      button {
+        width: 21px;
+        height: 21px;
+        background-color: transparent;
+        border-radius: 100rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        svg {
+          display: block;
+          margin: 0 auto;
+        }
+        &:hover {
+          background-color: rgba(116, 116, 116, 0.4);
+          color: #bd0a46;
+        }
+      }
+    }
+    .icon_btn:hover {
+      background-color: rgb(202, 202, 202);
+    }
+  }
+}
+
+.search_result {
+  width: 550px;
+  background: $modal_bg;
+  border-radius: 4px;
+  color: #5f6368;
+  padding: 8px 0;
+  box-shadow: rgba(0, 0, 0, 0.3) 6px 8px 16px;
+  &_header {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    padding: 4px 8px;
+    border-bottom: #a8afb9 1px solid;
+  }
+  &_list {
+    padding: 8px;
+  }
+  &-item {
+    @include flex(center, center);
+    gap: 8px;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    &:hover {
+      color: rgb(28, 89, 180);
+      background-color: rgba(167, 198, 255, 0.5);
+    }
+    .icon {
+      width: 40px;
+      height: 40px;
+    }
+    .info {
+      flex: 1;
+      &_name {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1;
+        color: rgb(60, 64, 67);
+      }
+      &_desc {
+        @include flex(flex-start, center);
+        gap: 6px;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 0;
+        color: rgb(97, 103, 107);
+        span {
+          margin-top: 3px;
+        }
+      }
+    }
+  }
+}

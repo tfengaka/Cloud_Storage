@@ -1,0 +1,38 @@
+.contextMenu {
+  width: 100%;
+
+  .wrapper {
+    min-width: 250px;
+    width: 100%;
+    min-height: 200px;
+    max-height: 400px;
+    max-width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    background: $modal_bg;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: rgba(0, 0, 0, 0.3) 6px 8px 16px;
+    z-index: 999;
+    overflow: hidden overlay;
+  }
+  &_item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    background-color: transparent;
+    color: #3f4246;
+    font-size: 1.6rem;
+    font-weight: 500;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    &:hover {
+      color: rgb(28, 89, 180);
+      background-color: rgba(167, 198, 255, 0.5);
+    }
+    svg {
+      width: 21px;
+    }
+  }
+}
